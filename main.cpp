@@ -7,23 +7,12 @@ void loadTrainingData(const std::string& filename, std::vector<std::vector<doubl
     std::ifstream inputFile(filename);
     if (inputFile.is_open()) {
         double value;
-        int numFeatures; // Dichiarazione della variabile numFeatures
-
-        // Leggi il numero di caratteristiche dal file
-        inputFile >> numFeatures;
-
         while (inputFile >> value) {
             std::vector<double> input;
-            input.push_back(value); // Aggiungi il valore corrente al vettore di input
-
-            // Ripeti per le altre caratteristiche
-            for (int i = 1; i < numFeatures; i++) {
-                inputFile >> value;
-                input.push_back(value);
-            }
+            input.push_back(value);
 
             int label;
-            inputFile >> label; // Leggi l'etichetta
+            inputFile >> label;
             labels.push_back(label);
             trainingData.push_back(input);
         }
@@ -34,22 +23,19 @@ void loadTrainingData(const std::string& filename, std::vector<std::vector<doubl
 }
 
 int main() {
-    // Parametri di configurazione
-    int numFeatures = 3; // Numero di caratteristiche (dimensione dei vettori di input)
-    double learningRate = 0.1;
+    int numFeatures = 3;
     int numIterations = 100;
 
-    // Caricamento dei dati di addestramento
     std::vector<std::vector<double>> trainingData;
     std::vector<int> labels;
     loadTrainingData("training_data.txt", trainingData, labels);
 
-    // Creazione e addestramento del perceptron
+    double learningRate = 0.1;  // Dichiarazione della variabile learningRate
+
     Perceptron perceptron(numFeatures, learningRate);
     perceptron.train(trainingData, labels, numIterations);
 
-    // Esempio di classificazione
-    std::vector<double> input = {1.0, 2.0, 3.0}; // Esempio di vettore di input da classificare
+    std::vector<double> input = {1.0, 2.0, 3.0};
     int prediction = perceptron.classify(input);
     std::cout << "Classificazione: " << prediction << std::endl;
 

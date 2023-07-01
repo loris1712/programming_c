@@ -10,17 +10,12 @@ Perceptron::Perceptron(int numFeatures, double learningRate) {
 }
 
 int Perceptron::classify(const std::vector<double>& input) {
-    // Calcolo dell'output del perceptron (1 o -1) basato sui pesi e l'input
     double sum = 0.0;
     for (int i = 0; i < input.size(); i++) {
         sum += input[i] * weights[i];
     }
 
-    if (sum >= 0) {
-        return 1;
-    } else {
-        return -1;
-    }
+    return (sum >= 0) ? 1 : -1;
 }
 
 void Perceptron::train(const std::vector<std::vector<double>>& trainingData, const std::vector<int>& labels, int numIterations) {
@@ -31,11 +26,20 @@ void Perceptron::train(const std::vector<std::vector<double>>& trainingData, con
             int prediction = classify(input);
             int error = label - prediction;
 
-            // Aggiornamento dei pesi basato sull'errore e il tasso di apprendimento
             for (int j = 0; j < weights.size(); j++) {
                 weights[j] += learningRate * error * input[j];
             }
         }
     }
+}
+
+// Implementazione dei getter
+
+const std::vector<double>& Perceptron::getWeights() const {
+    return weights;
+}
+
+double Perceptron::getLearningRate() const {
+    return learningRate;
 }
 
