@@ -1,4 +1,4 @@
-# programming_c
+# Software C++ - Perceptrons
 University Project for University of Siena.
 
 C++ project developed for university purposes with the following outline:
