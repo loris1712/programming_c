@@ -1,0 +1,33 @@
+Ecco una spiegazione dettagliata delle operazioni interne al software del perceptron per la classificazione binaria dei dati.
+
+1-Caricamento dei dati di addestramento:
+
+Il software carica i dati di addestramento da un file di input, che contiene vettori di caratteristiche numeriche
+e le rispettive etichette di classificazione (1 per "sport" e -1 per "non-sport").
+I dati di addestramento vengono organizzati in due vettori: trainingData (contenente i vettori di caratteristiche) e labels (contenente le etichette di classificazione).
+
+2-Inizializzazione dei pesi:
+   Il software inizializza casualmente i pesi del perceptron. I pesi sono rappresentati da un vettore di numeri, inizialmente impostati su valori casuali o a zero.
+
+3-Addestramento del perceptron:
+
+  Il software addestra il perceptron utilizzando i dati di addestramento e le etichette di classificazione.
+  Il processo di addestramento avviene attraverso più iterazioni (epoche) sui dati di addestramento.
+  Per ogni iterazione, il software presenta un vettore di caratteristiche dal trainingData al perceptron per la classificazione.
+  Il perceptron calcola il prodotto scalare tra i pesi attuali e il vettore di caratteristiche.
+  Se il risultato del prodotto scalare è maggiore di zero e l'etichetta di classificazione corrisponde a "sport" (1), il perceptron considera la classificazione corretta.
+  Se il risultato del prodotto scalare è minore o uguale a zero e l'etichetta di classificazione corrisponde a "non-sport" (-1), il perceptron considera la classificazione corretta.
+  Se la classificazione è errata, il perceptron aggiorna i pesi in base alla regola di aggiornamento del perceptron per avvicinare la classificazione corretta.
+  Questo processo di presentazione dei dati di addestramento, calcolo del prodotto scalare, valutazione della classificazione e aggiornamento dei pesi viene ripetuto per un numero di epoche                                           
+  definito o fino a quando non si raggiunge una precisione desiderata.
+
+
+4-Classificazione dei dati di test:
+ 
+  Dopo l'addestramento del perceptron, il software può eseguire la classificazione dei dati di test.
+  I dati di test sono vettori di caratteristiche numeriche senza etichette di classificazione.
+  Per ogni vettore di caratteristiche di test, il perceptron calcola il prodotto scalare tra i pesi addestrati e il vettore di caratteristiche.
+  Se il risultato del prodotto scalare è maggiore di zero, il perceptron classifica il dato di test come "sport".
+  Se il risultato del prodotto scalare è minore o uguale a zero, il perceptron classifica il dato di test come "non-sport".
+  Questo è un processo semplificato per illustrare le operazioni interne del software del perceptron per la classificazione binaria dei dati. Ovviamente, nel mondo reale, potrebbero essere 
+  necessarie ulteriori ottimizzazioni, tecniche di regolarizzazione o altre modifiche per ottenere risultati accurati e robusti.
